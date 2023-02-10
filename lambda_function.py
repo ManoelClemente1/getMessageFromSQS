@@ -9,7 +9,7 @@ sqs_client = boto3.client("sqs", region_name=AWS_REGION)
 def lambda_handler(event, context):
 
     response = sqs_client.receive_message(
-        QueueUrl="https://sqs.us-east-2.amazonaws.com/312957637516/sqs_teste",
+        QueueUrl="",
         MaxNumberOfMessages=1,
         WaitTimeSeconds=10,
     )
