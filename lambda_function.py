@@ -7,17 +7,16 @@ AWS_REGION = 'us-east-2'
 sqs_client = boto3.client("sqs", region_name=AWS_REGION)
 
 def lambda_handler(event, context):
-        
-        response = sqs_client.receive_message(
-            QueueUrl="",
-            MaxNumberOfMessages=1,
-            WaitTimeSeconds=10,
-            )
+
+    response = sqs_client.receive_message(
+        QueueUrl="https://sqs.us-east-2.amazonaws.com/312957637516/sqs_teste",
+        MaxNumberOfMessages=1,
+        WaitTimeSeconds=10,
+    )
             
-        print(response)
+    print(response)
         
-        for message in response.get("Messages", []):
-            message_body = ["Body"]
-            print(f"Message body: {json.loads(message_body)}"")
+    for message in response.get("Messages", []):
+        message_body = ["Body"]
+        print(f"Message body: {json.loads(message_body)}")
         
-    }
