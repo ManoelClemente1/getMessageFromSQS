@@ -11,13 +11,14 @@ def lambda_handler(event, context):
     print(event)
     
     ### Definindo nome do arquivo
-    today = date.today().strftime('%Y%m%d')
-    print(today)
+    day = date.today().strftime('%d')
+    month = date.today().strftime('%m')
+    year = date.today().strftime('%Y')
     
     ### vars
     caminho_do_arquivo_local="/tmp/arquivo.txt"
-    nome_do_arquivo_local=today +".txt"
-    nome_do_s3="bucket_name"
+    nome_do_arquivo_local=  year+ "/"+ month + "/" +day+".txt"
+    nome_do_s3="nome_bucket"
     
     try:
     
@@ -43,7 +44,7 @@ def lambda_handler(event, context):
             
 
 
-    except Exception as e:
+    except Exception as e:  
         return e
         
 
